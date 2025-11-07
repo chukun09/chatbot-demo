@@ -14,10 +14,6 @@ export class ClaudeService extends BaseApiService {
     var apiURL = import.meta.env.SEVER_BASE_URL || '';
     const url = `${apiURL}/api/anthropic`;
     console.log(url);
-    // const headers = {
-    //   'x-api-key': this.config.apiKey,
-    //   'anthropic-version': '2023-06-01',
-    // };
 
     // Convert our message format to Claude's format
     const claudeMessages = messages.map(msg => ({
@@ -47,8 +43,5 @@ export class ClaudeService extends BaseApiService {
       console.error('Claude API error:', error);
       throw new Error(`Failed to get response from Claude: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
-  }
-  private getEnvVar(name: string): string | undefined {
-    return (import.meta.env as any)[name];
   }
 }
