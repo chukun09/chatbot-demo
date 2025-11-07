@@ -7,11 +7,12 @@ export class ClaudeService extends BaseApiService {
       model: config.model || 'claude-3-sonnet-20240229',
       temperature: config.temperature ?? 0.7,
       maxTokens: config.maxTokens ?? 1000,
+      baseUrl: config.baseUrl || ''
     });
   }
 
   async generateResponse(messages: ApiMessage[]): Promise<ApiResponse> {
-    var apiURL = import.meta.env.SEVER_BASE_URL || '';
+    var apiURL = import.meta.env.SEVER_BASE_URL || this.config.baseUrl || '';
     const url = `${apiURL}/api/anthropic`;
     console.log(url);
 

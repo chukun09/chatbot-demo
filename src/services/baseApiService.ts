@@ -17,6 +17,7 @@ export interface ApiServiceConfig {
   model?: string;
   temperature?: number;
   maxTokens?: number;
+  baseUrl?: string;
 }
 
 export abstract class BaseApiService {

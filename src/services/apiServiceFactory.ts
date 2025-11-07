@@ -11,6 +11,7 @@ export interface ApiServiceFactoryConfig {
   model?: string;
   temperature?: number;
   maxTokens?: number;
+  baseUrl?: string;
 }
 
 export class ApiServiceFactory {
@@ -27,7 +28,7 @@ export class ApiServiceFactory {
   }
 
   createService(config: ApiServiceFactoryConfig): BaseApiService {
-    const { provider, claudeApiKey, chatGptApiKey, model, temperature, maxTokens } = config;
+    const { provider, claudeApiKey, chatGptApiKey, model, temperature, maxTokens, baseUrl } = config;
 
     let apiKey: string;
     let serviceConfig: ApiServiceConfig;
@@ -38,7 +39,7 @@ export class ApiServiceFactory {
         if (!apiKey) {
           throw new Error('Claude API key is required. Please set VITE_CLAUDE_API_KEY environment variable.');
         }
-        serviceConfig = { apiKey, model, temperature, maxTokens };
+        serviceConfig = { apiKey, model, temperature, maxTokens, baseUrl };
         this.service = new ClaudeService(serviceConfig);
         break;
 
@@ -47,7 +48,7 @@ export class ApiServiceFactory {
         if (!apiKey) {
           throw new Error('OpenAI API key is required. Please set VITE_OPENAI_API_KEY environment variable.');
         }
-        serviceConfig = { apiKey, model, temperature, maxTokens };
+        serviceConfig = { apiKey, model, temperature, maxTokens, baseUrl };
         this.service = new ChatGptService(serviceConfig);
         break;
 
