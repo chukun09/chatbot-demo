@@ -59,7 +59,7 @@ function App() {
           model: import.meta.env.VITE_AI_MODEL,
           temperature: parseFloat(import.meta.env.VITE_AI_TEMPERATURE || '0.7'),
           maxTokens: parseInt(import.meta.env.VITE_AI_MAX_TOKENS || '1000'),
-          baseUrl: import.meta.env.SEVER_BASE_URL || ''
+          baseUrl: import.meta.env.VITE_API_BASE || ''
         });
         setApiService(service);
         setApiError(null);
