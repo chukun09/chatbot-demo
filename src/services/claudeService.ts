@@ -12,7 +12,7 @@ export class ClaudeService extends BaseApiService {
   }
 
   async generateResponse(messages: ApiMessage[]): Promise<ApiResponse> {
-    var apiURL = import.meta.env.SEVER_BASE_URL || this.config.baseUrl || '';
+    var apiURL = this.config.baseUrl || '';
     const url = `${apiURL}/api/anthropic`;
     console.log(url);
 
