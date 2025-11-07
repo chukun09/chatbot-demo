@@ -12,9 +12,11 @@ export class ClaudeService extends BaseApiService {
   }
 
   async generateResponse(messages: ApiMessage[]): Promise<ApiResponse> {
-    var apiURL = this.config.baseUrl || '';
+    var apiURL = this.config.baseUrl || import.meta.env.VITE_API_BASE || '';
+    console.log('this.config.baseUrl', this.config.baseUrl);
+    console.log('import.meta.env.VITE_API_BASE', import.meta.env.VITE_API_BASE);
+    console.log('apiURL', apiURL);
     const url = `${apiURL}/api/anthropic`;
-    console.log(url);
 
     // Convert our message format to Claude's format
     const claudeMessages = messages.map(msg => ({
