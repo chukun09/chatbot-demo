@@ -11,7 +11,7 @@ export class ClaudeService extends BaseApiService {
   }
 
   async generateResponse(messages: ApiMessage[]): Promise<ApiResponse> {
-    var apiURL = this.getEnvVar('SEVER_BASE_URL') || '';
+    var apiURL = import.meta.env.SEVER_BASE_URL || '';
     const url = `${apiURL}/api/anthropic`;
     console.log(url);
     // const headers = {
